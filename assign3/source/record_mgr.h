@@ -5,10 +5,6 @@
 #include "expr.h"
 #include "tables.h"
 
-#include "yanbo.c"
-#include "yitong.c"
-#include "xinghang.c"
-
 // Bookkeeping for scans
 typedef struct RM_ScanHandle
 {
