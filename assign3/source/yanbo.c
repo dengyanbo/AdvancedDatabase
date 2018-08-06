@@ -4,6 +4,9 @@
 RC insertRecord (RM_TableData *rel, Record *record){
     if(rel == NULL) return RC_RM_NO_MORE_TUPLES;
     if(record == NULL) return RC_OK;
+    BM_BufferPool* bm = rel->mgmtData;
+    BM_PageHandle* ph = bm->mgmtData;
+
     
 
     return RC_OK;
