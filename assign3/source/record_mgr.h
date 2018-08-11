@@ -9,6 +9,7 @@
 #include "tables.h"
 #include "storage_mgr.h"
 #include "buffer_mgr.h"
+#include "test_helper.h"
 
 // Bookkeeping for scans
 typedef struct RM_ScanHandle
@@ -16,6 +17,12 @@ typedef struct RM_ScanHandle
 	RM_TableData *rel;
 	void *mgmtData;
 } RM_ScanHandle;
+
+typedef struct RM_ScanData{
+	int numScan;
+	RID id;
+	Expr* cond;
+} RM_ScanData;
 
 // table and manager
 extern RC initRecordManager (void *mgmtData);

@@ -1,4 +1,4 @@
-TARGET_EXEC ?= assign2.out
+TARGET_EXEC ?= assign3.out
 
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./source

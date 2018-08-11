@@ -28,18 +28,23 @@ typedef struct BM_BufferPool {
                   // manager needs for a buffer pool
 } BM_BufferPool;
 
+typedef struct Slot{
+  int numSlot;
+  bool isEmpty[PAGE_SIZE];
+} Slot;
+
 typedef struct BM_PageHandle {
   PageNumber pageNum;
   char *data;
 } BM_PageHandle;
-
 
 typedef struct Frame{
   struct Frame *previous;
   struct Frame *next;
   BM_PageHandle *ph;   
   int dirty;            //1: dirty, 0: not dirty
-  int fixCount;            
+  int fixCount;  
+  Slot *slots;          
 } Frame;
 
 typedef struct BM_DataManager{
@@ -58,6 +63,7 @@ typedef struct BM_DataManager{
   ((BM_PageHandle *) malloc (sizeof(BM_PageHandle)))
 
 // Buffer Manager Interface Pool Handling
+Frame *newFrame(int frameIndex);
 RC initBufferPool(BM_BufferPool *const bm, const char *const pageFileName, 
 		  const int numPages, ReplacementStrategy strategy, 
 		  void *stratData);

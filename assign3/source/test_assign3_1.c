@@ -381,6 +381,7 @@ testInsertManyRecords(void)
 	TEST_CHECK(openTable(table, "test_table_t"));
 
 	// insert rows into table
+	printf("start insert rows\n");
 	for(i = 0; i < numInserts; i++)
 	{
 		realInserts[i] = inserts[i%10];
@@ -389,6 +390,8 @@ testInsertManyRecords(void)
 		TEST_CHECK(insertRecord(table,r));
 		rids[i] = r->id;
 	}
+	printf("end insert rows\n");
+
 	TEST_CHECK(closeTable(table));
 	TEST_CHECK(openTable(table, "test_table_t"));
 
