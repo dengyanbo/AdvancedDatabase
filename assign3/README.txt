@@ -7,7 +7,7 @@
 ********** HOW TO RUN **********
 1. Go to the folder which contains source/ README.txt and Makefile
 2. > make
-3. > ./build/assign2.out
+3. > ./build/assign3.out
 4. > make clean
 
 ********* Methods Description In buffer_mgr.c **********
