@@ -181,11 +181,12 @@ RC writeBlock (int pageNum, SM_FileHandle *fHandle, SM_PageHandle memPage){
         return RC_FILE_HANDLE_NOT_INIT;
     }
     // check if pageNum exists in the fHandle
-    if(fHandle->totalNumPages <= pageNum) {
-        printf("Write Error! Page number not found!\n");
-        return RC_WRITE_FAILED;
+    while(fHandle->totalNumPages <= pageNum) {
+        appendEmptyBlock(fHandle);
+        printf("auto add one empty page\n");
     }
     // set the file header to the current block (pageNum)
+    printf("size: %lu, pageNum*Page_Size = %d\n", sizeof(fHandle->mgmtInfo), pageNum*PAGE_SIZE);
     fseek(fHandle->mgmtInfo, pageNum * PAGE_SIZE, SEEK_SET);
     // write page file (memPage) to current block
     if(fwrite(memPage, PAGE_SIZE, 1, fHandle->mgmtInfo) != 1){
